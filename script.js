@@ -5,7 +5,7 @@ function getRndInteger(min, max) {
   }
 
 function getComputerChoice() {
-    let randomNumber = getRndInteger(1,3);
+    let randomNumber = getRndInteger(1,4);
     if (randomNumber === 1) {
         return 'Rock';
     }
