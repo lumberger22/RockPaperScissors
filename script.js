@@ -1,18 +1,44 @@
 /* Script javascript file for the Rock Paper Scissors Game */
+
+//Query selectors
 const numberOfWins = document.querySelector('.numberOfWins');
 const scoreContent = document.querySelector('.score-content');
+const rockSelection = document.querySelector('.rock');
+const paperSelection = document.querySelector('.paper');
+const scissorsSelection = document.querySelector('.scissors');
+const roundResult = document.querySelector('.roundResult');
 
+//Variable declarations
 let computerScore = 0;
 let playerScore = 0;
 let wins = 0;
 
+//Number & Text displays
 numberOfWins.textContent = wins;
 scoreContent.textContent = (`${playerScore} - ${computerScore}`);
+roundResult.textContent = ('MAKE A CHOICE TO BEGIN');
 
+//Event Listeners
+rockSelection.addEventListener("click", () => {
+    playerSelection = 'rock';
+    playRound;
+})
 
+paperSelection.addEventListener("click", () => {
+    playerSelection = 'paper';
+    playRound;
+})
+
+scissorsSelection.addEventListener("click", () => {
+    playerSelection = 'scissors';
+    playRound;
+})
+
+//Functions
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
+
 
 function getComputerChoice() {
     let randomNumber = getRndInteger(1,4);
@@ -26,11 +52,36 @@ function getComputerChoice() {
         return 'scissors';
 }
 
-function playRound(playerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    let computerSelection = getComputerChoice();
+function gameActive () {
+    if (playerScore === 3 || computerScore === 3) {
+        return false;
+    }
+    else return true;
+}
 
-    if (computerSelection === 'rock') {
+function endResult() {
+    if (playerScore > computerScore) {
+        roundResult.textContent = 'You Won Rock Paper Scissors!';
+        return;
+    }
+    else
+        roundResult.textContent = 'The Hokie Bird beat you! You Lost!';
+        return;
+}
+
+function playRound() {
+    if (!gameActive) {
+        endResult;
+        return;
+    }
+    console.log('Start of round');
+    let computerSelection = getComputerChoice();
+    console.log(computerSelection);
+
+    playerScore = playerScore + 1;
+    scoreContent.textContent = (`${playerScore} - ${computerScore}`);
+
+/*    if (computerSelection === 'rock') {
         if (playerSelection === 'rock') {
             return 'Thats a Tie! Both you and the computer chose Rock!';
         }
@@ -60,8 +111,7 @@ function playRound(playerSelection) {
         else
             return 'Thats a Tie! Both you and the computer chose Paper!';
     }
-
-
+*/
 }
 
 function game() {
