@@ -9,7 +9,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
 .circle {  
@@ -20,6 +20,7 @@
     width: 110px;
     background-color: white;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 body {
@@ -33,11 +34,19 @@ body {
     flex-direction: column;
 }
 
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .title-header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 40%;
+    min-width: min-content;
     align-items: center;
     border: solid var(--vt-lightorange);
     border-width: 2px;
@@ -55,23 +64,27 @@ body {
 
 .win-counter {
    background: white;
-   font-size: 20px;
+   font-size: 17px;
    border-radius: 10px;
    height: 100%;
    color: var(--vt-maroon);
    display: flex;
    flex-direction: column;
    align-items: center;
-   justify-content: center;
+   justify-content: flex-start;
+   padding: 15px 40px 10px 40px;
+   flex: 1;
+   max-width: 50px;
 
 }
+
 .selections {
     display: flex;
 }
 
 .selections ul {
     display: flex;
-    gap: 60px;
+    gap: 4vw;
     margin: 40px;
 }
 
@@ -82,10 +95,43 @@ body {
 
 .bottom-main {
     display: flex;
+    flex-direction: row;
     flex: 1;
     flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: space-between;
     color: white;
-    gap: 200px;
+    gap: 10vw;
+}
+
+.choice-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 170px;
+    width: 170px;
+    background-color: var(--vt-maroon);
+    border-radius: 50%;
+    margin: 20px 20px 0px 20px;
+}
+
+.player-choice,
+.hokiebird-choice,
+.score-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+    font-size: 17px;
+}
+
+.score-section {
+    justify-content: center;
+}
+
+.rules {
+    display: flex;
+    cursor: pointer;
+    margin: 0px;
 }
