@@ -1,8 +1,18 @@
 /* Script javascript file for the Rock Paper Scissors Game */
+const numberOfWins = document.querySelector('.numberOfWins');
+const scoreContent = document.querySelector('.score-content');
+
+let computerScore = 0;
+let playerScore = 0;
+let wins = 0;
+
+numberOfWins.textContent = wins;
+scoreContent.textContent = (`${playerScore} - ${computerScore}`);
+
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
-  }
+}
 
 function getComputerChoice() {
     let randomNumber = getRndInteger(1,4);
@@ -33,7 +43,6 @@ function playRound(playerSelection) {
     else if (computerSelection === 'scissors') {
         if (playerSelection === 'rock') {
             return 'You Win! Rock beats Scissors!';
-            let result = win;
         }
         else if (playerSelection === 'scissors') {
             return 'Thats a Tie! Both you and the computer chose Scissors!';
@@ -51,6 +60,8 @@ function playRound(playerSelection) {
         else
             return 'Thats a Tie! Both you and the computer chose Paper!';
     }
+
+
 }
 
 function game() {
