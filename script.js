@@ -22,19 +22,16 @@ roundResult.textContent = ('MAKE A CHOICE TO BEGIN');
 //Event Listeners
 rockSelection.addEventListener("click", () => {
     playerSelection = 'rock';
-    console.log(playerSelection);
     playRound();
 })
 
 paperSelection.addEventListener("click", () => {
     playerSelection = 'paper';
-    console.log(playerSelection);
     playRound();
 })
 
 scissorsSelection.addEventListener("click", () => {
     playerSelection = 'scissors';
-    console.log(playerSelection);
     playRound();
 })
 
@@ -105,14 +102,8 @@ function comparison(computerSelection, playerSelection) {
     }
 }
 
-function playRound() {
-    console.log('start round');
-    if (!gameActive) {
-        endResult;
-        return;
-    }
+function playRound() {    
     let computerSelection = getComputerChoice();
-    console.log(`computer choice: ${computerSelection}`);
     let result = comparison(computerSelection, playerSelection);
 
     if (result === 'win') {
@@ -127,5 +118,15 @@ function playRound() {
         roundResult.textContent = 'Thats a Tie';
 
     scoreContent.textContent = (`${playerScore} - ${computerScore}`);
+    
+    if (playerScore === 3 || computerScore === 3) {
+        if (playerScore > computerScore) {
+            roundResult.textContent = 'You Won Rock Paper Scissors!';
+            return;
+        }
+        else
+            roundResult.textContent = 'The Hokie Bird beat you! You Lost!';
+            return;
+    }
 
 }

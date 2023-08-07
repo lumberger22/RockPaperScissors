@@ -34,13 +34,6 @@ body {
     flex-direction: column;
 }
 
-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
 .title-header {
     display: flex;
     flex-direction: row;
@@ -128,12 +121,6 @@ footer {
 
 .score-section {
     justify-content: center;
-}
-
-.rules {
-    display: flex;
-    cursor: pointer;
-    margin: 0px;
 }
 
 .score-container {
