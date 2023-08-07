@@ -9,6 +9,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: content-box;
 }
 
 .circle {  
@@ -36,24 +37,23 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 40%;
     align-items: center;
-    max-width: 640px;
     border: solid var(--vt-lightorange);
     border-width: 2px;
     border-radius: 10px;
     margin-top: 50px;
     padding: 1.5rem;
-    gap: 350px;
 }
 
 .title {
     display: flex;
+    flex: 1;
     justify-content: left;
     align-items: center;
 }
 
 .win-counter {
-    width: 140px;
    background: white;
    font-size: 20px;
    border-radius: 10px;
@@ -80,3 +80,12 @@ body {
     border-radius: 50%;
 }
 
+.bottom-main {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+    gap: 200px;
+}
