@@ -12,6 +12,7 @@ const roundResult = document.querySelector('.roundResult');
 let computerScore = 0;
 let playerScore = 0;
 let wins = 0;
+let playerSelection = '';
 
 //Number & Text displays
 numberOfWins.textContent = wins;
@@ -21,24 +22,26 @@ roundResult.textContent = ('MAKE A CHOICE TO BEGIN');
 //Event Listeners
 rockSelection.addEventListener("click", () => {
     playerSelection = 'rock';
-    playRound;
+    console.log(playerSelection);
+    playRound();
 })
 
 paperSelection.addEventListener("click", () => {
     playerSelection = 'paper';
-    playRound;
+    console.log(playerSelection);
+    playRound();
 })
 
 scissorsSelection.addEventListener("click", () => {
     playerSelection = 'scissors';
-    playRound;
+    console.log(playerSelection);
+    playRound();
 })
 
 //Functions
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
-
 
 function getComputerChoice() {
     let randomNumber = getRndInteger(1,4);
@@ -69,71 +72,60 @@ function endResult() {
         return;
 }
 
+function comparison(computerSelection, playerSelection) {
+    if (computerSelection === 'rock') {
+        if (playerSelection === 'rock') {
+            return 'tie';
+        }
+        else if (playerSelection === 'scissors') {
+            return 'loss';
+        }
+        else
+            return 'win';
+    }
+    else if (computerSelection === 'scissors') {
+        if (playerSelection === 'rock') {
+            return 'win';
+        }
+        else if (playerSelection === 'scissors') {
+            return 'tie';
+        }
+        else
+            return 'loss';
+    }
+    else {
+        if (playerSelection === 'rock') {
+            return 'loss';
+        }
+        else if (playerSelection === 'scissors') {
+            return 'win';
+        }
+        else
+            return 'tie';
+    }
+}
+
 function playRound() {
+    console.log('start round');
     if (!gameActive) {
         endResult;
         return;
     }
-    console.log('Start of round');
     let computerSelection = getComputerChoice();
-    console.log(computerSelection);
+    console.log(`computer choice: ${computerSelection}`);
+    let result = comparison(computerSelection, playerSelection);
 
-    playerScore = playerScore + 1;
+    if (result === 'win') {
+        playerScore = playerScore + 1;
+        roundResult.textContent = 'You won that round!';
+    }
+    else if (result === 'loss') {
+        computerScore = computerScore + 1;
+        roundResult.textContent = 'You lost that round!';
+    }
+    else
+        roundResult.textContent = 'Thats a Tie';
+
     scoreContent.textContent = (`${playerScore} - ${computerScore}`);
 
-/*    if (computerSelection === 'rock') {
-        if (playerSelection === 'rock') {
-            return 'Thats a Tie! Both you and the computer chose Rock!';
-        }
-        else if (playerSelection === 'scissors') {
-            return 'You Lose! Rock beats Scissors!';
-        }
-        else
-            return 'You Win! Paper beats Rock';
-    }
-    else if (computerSelection === 'scissors') {
-        if (playerSelection === 'rock') {
-            return 'You Win! Rock beats Scissors!';
-        }
-        else if (playerSelection === 'scissors') {
-            return 'Thats a Tie! Both you and the computer chose Scissors!';
-        }
-        else
-            return 'You Lose! Scissors beats Paper!';
-    }
-    else {
-        if (playerSelection === 'rock') {
-            return 'You Lose! Rock beats Paper!';
-        }
-        else if (playerSelection === 'scissors') {
-            return 'You Win! Scissors beats paper!';
-        }
-        else
-            return 'Thats a Tie! Both you and the computer chose Paper!';
-    }
-*/
-}
-
-function game() {
-    let computerScore = 0;
-    let playerScore = 0;
-
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Rock, Paper, or Scissors?");
-        let result = playRound(playerSelection);
-        console.log(result);
-        if (result.substring(0,5) === 'Thats') {
-            console.log("Computer: " + computerScore + " | player: " + playerScore);
-        }
-        else if (result.substring(0,5) === 'You W') {
-            playerScore++;
-            console.log("Computer: " + computerScore + " | player: " + playerScore);
-        }
-        else {
-            computerScore++;
-            console.log("Computer: " + computerScore + " | player: " + playerScore);
-        }
-    }
-
-    console.log("The final score was, computer: " + computerScore + " | player: " + playerScore);
 }
