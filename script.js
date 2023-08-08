@@ -10,6 +10,7 @@ const scissorsSelection = document.querySelector('.scissors');
 const roundResult = document.querySelector('.roundResult');
 const circleEnd = document.querySelector('.circle-end');
 const selection = document.querySelector('.circle');
+const choiceCircle = document.querySelector('.choice-circle');
 
 //ID GetElements
 const scoreSection = document.getElementById('score-section');
@@ -21,6 +22,8 @@ let computerScore = 0;
 let playerScore = 0;
 let wins = 0;
 let playerSelection = '';
+
+//Class Creation
 
 //DOM Element Creation
 
@@ -40,29 +43,29 @@ let playerSelection = '';
     //Rock Image Choice
     const rockImg1 = document.createElement('img');
     rockImg1.src = 'images/icon-rock.svg';
-    rockImg1.style.borderRadius = '50%';
+    rockImg1.style.transform = 'scale(1.5)';
 
     const rockImg2 = document.createElement('img');
     rockImg2.src = 'images/icon-rock.svg';
-    rockImg2.style.borderRadius = '50%';
+    rockImg2.style.transform = 'scale(1.5)';
 
     //Paper Image Choice
     const paperImg1 = document.createElement('img');
     paperImg1.src = 'images/icon-paper.svg';
-    paperImg1.style.borderRadius = '50%';
+    paperImg1.style.transform = 'scale(1.5)';
 
     const paperImg2 = document.createElement('img');
     paperImg2.src = 'images/icon-paper.svg';
-    paperImg2.style.borderRadius = '50%';
+    paperImg2.style.transform = 'scale(1.5)';
 
     //Scissors Image Choice
     const scissorsImg1 = document.createElement('img');
     scissorsImg1.src = 'images/icon-scissors.svg';
-    scissorsImg1.style.borderRadius = '50%';
+    scissorsImg1.style.transform = 'scale(1.5)';
 
     const scissorsImg2 = document.createElement('img');
     scissorsImg2.src = 'images/icon-scissors.svg';
-    scissorsImg2.style.borderRadius = '50%';
+    scissorsImg2.style.transform = 'scale(1.5)';
     
 //Text and Number displays
 numberOfWins.textContent = wins;
@@ -71,9 +74,7 @@ roundResult.textContent = ('MAKE A CHOICE TO BEGIN');
 
 //Event Listeners
 rockSelection.addEventListener("click", selectRock);
-
 paperSelection.addEventListener("click", selectPaper);
-
 scissorsSelection.addEventListener("click", selectScissors);
 
 //Functions
@@ -109,6 +110,8 @@ function getComputerChoice() {
 }
 
 function showComputerChoice(choice) {
+    choiceCircle.style.backgroundColor = 'white';
+
     if (choice === 'rock') {
         hokiebirdImg.appendChild(rockImg1);
     }
@@ -121,11 +124,14 @@ function showComputerChoice(choice) {
 
 function removeComputerChoice() {
     if (hokiebirdImg.hasChildNodes()) {
-    hokiebirdImg.removeChild(hokiebirdImg.firstElementChild);
+        choiceCircle.style.backgroundColor = 'var(--vt-maroon)';
+        hokiebirdImg.removeChild(hokiebirdImg.firstElementChild);
     }
 }
 
 function showPlayerChoice(choice) {
+    choiceCircle.style.backgroundColor = 'white';
+
     if (choice === 'rock') {
         playerImg.appendChild(rockImg2);
     }
@@ -133,11 +139,12 @@ function showPlayerChoice(choice) {
         playerImg.appendChild(paperImg2);
     }
     else
-        playerImg.appendChild(scissorsImg2);
+        playerImg.appendChild(scissorsImg2);    
 }
 
 function removePlayerChoice() {
-    if (playerImg.hasChildNodes()) {
+    if (playerImg.hasChildNodes()) {    
+        choiceCircle.style.backgroundColor = 'var(--vt-maroon)';
         playerImg.removeChild(playerImg.firstElementChild);
     }
 }
