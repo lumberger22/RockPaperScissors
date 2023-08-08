@@ -78,6 +78,14 @@ function getComputerChoice() {
         return 'scissors';
 }
 
+function showComputerChoice() {
+    
+}
+
+function showPlayerChoice() {
+
+}
+
 function gameActive () {
     if (playerScore === 3 || computerScore === 3) {
         return false;
@@ -130,6 +138,8 @@ function comparison(computerSelection, playerSelection) {
 
 function playRound() {    
     let computerSelection = getComputerChoice();
+    showComputerChoice();
+    showPlayerChoice();
     let result = comparison(computerSelection, playerSelection);
 
     if (result === 'win') {
