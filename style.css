@@ -101,7 +101,7 @@ body {
     flex: 1;
     flex-direction: row;
     color: white;
-    gap: 10vw;
+    gap: 4vw;
 }
 
 .choice-circle {
@@ -122,14 +122,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-weight: bold;
     text-align: center;
     font-size: 17px;
 }
 
 .score-section {
     justify-content: center;
-    max-width: 181pxs;
+    max-width: 181px;
+    margin-top: 20px;
 }
 
 .score-container {
