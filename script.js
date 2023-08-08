@@ -18,9 +18,21 @@ let wins = 0;
 let playerSelection = '';
 
 //DOM Element Creation
-const btn = document.createElement('button');
-btn.textContent = 'PLAY AGAIN'
-const scoreSection = document.getElementById('score-section');
+
+    //Play Again Button
+    const btn = document.createElement('button');
+    btn.textContent = 'PLAY AGAIN'
+    const scoreSection = document.getElementById('score-section');
+    btn.style.color = 'var(--vt-maroon)';
+    btn.style.cursor = 'pointer';
+    btn.style.fontSize = '17px';
+    btn.style.fontWeight = 'bold';
+    btn.style.borderColor = 'var(--vt-maroon)';
+    btn.style.borderRadius = '7px';
+    btn.style.backgroundColor = 'var(--vt-lightorange)';
+    btn.style.fontFamily = '"Barlow Semi Condensed", sans-serif';
+    btn.style.padding = '10px';
+
 
 //Text and Number displays
 numberOfWins.textContent = wins;
