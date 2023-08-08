@@ -1,6 +1,6 @@
 :root {
     --vt-maroon: #861F41;
-    --vt-lightmaroon: #bb2b5b;
+    --vt-lightmaroon: #c33e6b;
     --vt-orange: #c64600;
     --vt-lightorange: #e87722;
     --vt-hokiestone: #75787b;
@@ -21,6 +21,11 @@
     background-color: white;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.circle:hover {
+    box-shadow: 0 0 20px white;
+    transition: .1s;
 }
 
 body {
@@ -68,7 +73,11 @@ body {
    padding: 15px 40px 10px 40px;
    flex: 1;
    max-width: 50px;
+}
 
+.numberOfWins {
+    font-size: 30px;
+    padding-top: 5px;
 }
 
 .selections {
@@ -91,7 +100,6 @@ body {
     flex-direction: row;
     flex: 1;
     flex-direction: row;
-    justify-content: space-between;
     color: white;
     gap: 10vw;
 }
@@ -121,6 +129,7 @@ body {
 
 .score-section {
     justify-content: center;
+    max-width: 181pxs;
 }
 
 .score-container {
@@ -129,4 +138,8 @@ body {
     padding: 20px;
     border-radius: 10px;
     color: var(--vt-maroon);
+}
+
+.score-content {
+    font-size: 30px;
 }
