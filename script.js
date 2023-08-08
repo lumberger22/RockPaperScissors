@@ -1,6 +1,6 @@
 /* Script javascript file for the Rock Paper Scissors Game */
 
-//Query selectors
+//Query selectors and ID
 const numberOfWins = document.querySelector('.numberOfWins');
 const scoreContent = document.querySelector('.score-content');
 const scoreText = document.querySelector('.score-text');
@@ -10,6 +10,11 @@ const scissorsSelection = document.querySelector('.scissors');
 const roundResult = document.querySelector('.roundResult');
 const circleEnd = document.querySelector('.circle-end');
 const selection = document.querySelector('.circle');
+
+//ID GetElements
+const scoreSection = document.getElementById('score-section');
+const playerImg = document.getElementById('player-img');
+const hokiebirdImg = document.getElementById('hokiebird-img');
 
 //Variable declarations
 let computerScore = 0;
@@ -22,7 +27,6 @@ let playerSelection = '';
     //Play Again Button
     const btn = document.createElement('button');
     btn.textContent = 'PLAY AGAIN'
-    const scoreSection = document.getElementById('score-section');
     btn.style.color = 'var(--vt-maroon)';
     btn.style.cursor = 'pointer';
     btn.style.fontSize = '17px';
@@ -33,7 +37,33 @@ let playerSelection = '';
     btn.style.fontFamily = '"Barlow Semi Condensed", sans-serif';
     btn.style.padding = '10px';
 
+    //Rock Image Choice
+    const rockImg1 = document.createElement('img');
+    rockImg1.src = 'images/icon-rock.svg';
+    rockImg1.style.borderRadius = '50%';
 
+    const rockImg2 = document.createElement('img');
+    rockImg2.src = 'images/icon-rock.svg';
+    rockImg2.style.borderRadius = '50%';
+
+    //Paper Image Choice
+    const paperImg1 = document.createElement('img');
+    paperImg1.src = 'images/icon-paper.svg';
+    paperImg1.style.borderRadius = '50%';
+
+    const paperImg2 = document.createElement('img');
+    paperImg2.src = 'images/icon-paper.svg';
+    paperImg2.style.borderRadius = '50%';
+
+    //Scissors Image Choice
+    const scissorsImg1 = document.createElement('img');
+    scissorsImg1.src = 'images/icon-scissors.svg';
+    scissorsImg1.style.borderRadius = '50%';
+
+    const scissorsImg2 = document.createElement('img');
+    scissorsImg2.src = 'images/icon-scissors.svg';
+    scissorsImg2.style.borderRadius = '50%';
+    
 //Text and Number displays
 numberOfWins.textContent = wins;
 scoreContent.textContent = (`${playerScore} - ${computerScore}`);
@@ -78,12 +108,38 @@ function getComputerChoice() {
         return 'scissors';
 }
 
-function showComputerChoice() {
-    
+function showComputerChoice(choice) {
+    if (choice === 'rock') {
+        hokiebirdImg.appendChild(rockImg1);
+    }
+    else if (choice === 'paper') {
+        hokiebirdImg.appendChild(paperImg1);
+    }
+    else
+        hokiebirdImg.appendChild(scissorsImg1);
 }
 
-function showPlayerChoice() {
+function removeComputerChoice() {
+    if (hokiebirdImg.hasChildNodes()) {
+    hokiebirdImg.removeChild(hokiebirdImg.firstElementChild);
+    }
+}
 
+function showPlayerChoice(choice) {
+    if (choice === 'rock') {
+        playerImg.appendChild(rockImg2);
+    }
+    else if (choice === 'paper') {
+        playerImg.appendChild(paperImg2);
+    }
+    else
+        playerImg.appendChild(scissorsImg2);
+}
+
+function removePlayerChoice() {
+    if (playerImg.hasChildNodes()) {
+        playerImg.removeChild(playerImg.firstElementChild);
+    }
 }
 
 function gameActive () {
@@ -136,10 +192,12 @@ function comparison(computerSelection, playerSelection) {
     }
 }
 
-function playRound() {    
+function playRound() {   
+    removeComputerChoice();
+    removePlayerChoice();
     let computerSelection = getComputerChoice();
-    showComputerChoice();
-    showPlayerChoice();
+    showPlayerChoice(playerSelection);
+    showComputerChoice(computerSelection);
     let result = comparison(computerSelection, playerSelection);
 
     if (result === 'win') {
@@ -185,6 +243,8 @@ function endGame() {
 function startGame() {
     playerScore = 0;
     computerScore = 0;
+    removeComputerChoice();
+    removePlayerChoice();
     btn.remove();
     rockSelection.addEventListener("click", selectRock);
     paperSelection.addEventListener("click", selectPaper);
