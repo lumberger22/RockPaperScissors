@@ -207,27 +207,27 @@ function playRound() {
 
     if (result === 'win') {
         playerScore = playerScore + 1;
-        roundResult.textContent = 'You won that round!';
+        roundResult.textContent = 'You Won That Round!';
     }
     else if (result === 'loss') {
         computerScore = computerScore + 1;
-        roundResult.textContent = 'You lost that round!';
+        roundResult.textContent = 'You Lost That Round!';
     }
     else
-        roundResult.textContent = 'Thats a Tie';
+        roundResult.textContent = 'Thats a Tie!';
 
     scoreContent.textContent = (`${playerScore} - ${computerScore}`);
     
     if (playerScore === 3 || computerScore === 3) {
         if (playerScore > computerScore) {
-            roundResult.textContent = 'You beat the Hokie Bird!';
+            roundResult.textContent = 'You Beat The Hokie Bird!';
             wins = wins + 1;
             numberOfWins.textContent = wins;
             endGame();
             return;
         }
         else
-            roundResult.textContent = 'The Hokie Bird beat you! You Lost!';
+            roundResult.textContent = 'The Hokie Bird Beat You! You Lost!';
             endGame();
             return;
     }
