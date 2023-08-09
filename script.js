@@ -110,7 +110,6 @@ function getComputerChoice() {
 }
 
 function showComputerChoice(choice) {
-    choiceCircle.style.backgroundColor = 'white';
 
     if (choice === 'rock') {
         hokiebirdImg.appendChild(rockImg1);
@@ -124,13 +123,11 @@ function showComputerChoice(choice) {
 
 function removeComputerChoice() {
     if (hokiebirdImg.hasChildNodes()) {
-        choiceCircle.style.backgroundColor = 'var(--vt-maroon)';
         hokiebirdImg.removeChild(hokiebirdImg.firstElementChild);
     }
 }
 
 function showPlayerChoice(choice) {
-    choiceCircle.style.backgroundColor = 'white';
 
     if (choice === 'rock') {
         playerImg.appendChild(rockImg2);
@@ -144,7 +141,6 @@ function showPlayerChoice(choice) {
 
 function removePlayerChoice() {
     if (playerImg.hasChildNodes()) {    
-        choiceCircle.style.backgroundColor = 'var(--vt-maroon)';
         playerImg.removeChild(playerImg.firstElementChild);
     }
 }
@@ -202,10 +198,12 @@ function comparison(computerSelection, playerSelection) {
 function playRound() {   
     removeComputerChoice();
     removePlayerChoice();
+    removeStylesFromCircle();
     let computerSelection = getComputerChoice();
     showPlayerChoice(playerSelection);
     showComputerChoice(computerSelection);
     let result = comparison(computerSelection, playerSelection);
+    addStylestoCircle(result);
 
     if (result === 'win') {
         playerScore = playerScore + 1;
@@ -252,10 +250,44 @@ function startGame() {
     computerScore = 0;
     removeComputerChoice();
     removePlayerChoice();
+    removeStylesFromCircle();
     btn.remove();
     rockSelection.addEventListener("click", selectRock);
     paperSelection.addEventListener("click", selectPaper);
     scissorsSelection.addEventListener("click", selectScissors);
     scoreContent.textContent = (`${playerScore} - ${computerScore}`);
     roundResult.textContent = ('MAKE A CHOICE TO BEGIN');
+}
+
+function addStylestoCircle(result) {
+    playerImg.style.backgroundColor = 'white';
+    hokiebirdImg.style.backgroundColor = 'white';
+    
+    if (result === 'win') {
+        playerImg.style.border = 'solid 20px green';
+        playerImg.style.boxShadow = '0 10px var(--green-shadow)';
+        hokiebirdImg.style.border = 'solid 20px var(--win-red)';
+        hokiebirdImg.style.boxShadow = '0 10px var(--red-shadow)';
+    }
+    else if (result === 'loss') {
+        playerImg.style.border = 'solid 20px var(--win-red)';
+        playerImg.style.boxShadow = '0 10px var(--red-shadow)';
+        hokiebirdImg.style.border = 'solid 20px green';
+        hokiebirdImg.style.boxShadow = '0 10px var(--green-shadow)'
+    }
+    else {
+        playerImg.style.border = 'solid 20px var(--vt-hokiestone)';
+        playerImg.style.boxShadow = '0 10px var(--grey-shadow)';
+        hokiebirdImg.style.border = 'solid 20px var(--vt-hokiestone)';
+        hokiebirdImg.style.boxShadow = '0 10px var(--grey-shadow)'
+    }
+}
+
+function removeStylesFromCircle() {
+    playerImg.style.backgroundColor = 'var(--vt-maroon)';
+    playerImg.style.border = 'none';
+    playerImg.style.boxShadow = 'none';
+    hokiebirdImg.style.backgroundColor = 'var(--vt-maroon)';
+    hokiebirdImg.style.border = 'none';
+    hokiebirdImg.style.boxShadow = 'none';
 }

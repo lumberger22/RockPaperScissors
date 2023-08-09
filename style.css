@@ -4,6 +4,10 @@
     --vt-orange: #c64600;
     --vt-lightorange: #e87722;
     --vt-hokiestone: #75787b;
+    --win-red: rgb(200, 38, 38);
+    --green-shadow: rgb(8, 98, 8);
+    --red-shadow: rgb(187, 24, 24);
+    --grey-shadow: #68696a;
 }
 
 * {
