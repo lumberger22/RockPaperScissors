@@ -10,10 +10,13 @@
 <body>
     <div class="title-header">
         <div class="title"><img src="images/title.svg"></div>
-        <div class="win-counter">Wins</div>
+        <div class="win-counter">
+            <p>WINS</p>
+            <div class="numberOfWins"></div>
+        </div>
     </div>
     <div class="selections">
-        <ul>
+        <ul id="circle-id">
             <li class="rock circle"><img src="images/icon-rock.svg" alt="rock image" /></li>
             <li class="paper circle"><img src="images/icon-paper.svg" alt="paper image" /></li>
             <li class="scissors circle"><img src="images/icon-scissors.svg" alt="scissors image" /></li>
@@ -22,22 +25,20 @@
     <div class="bottom-main">
         <div class="player-choice">
             <p>YOU CHOSE</p>
-            <div class="choice-circle"></div>
+            <div id='player-img' class="choice-circle"></div>
         </div>
         <div class="score-section">
-            <p>MAKE A CHOICE TO BEGIN</p>
-            <div class="score">
-                <p>SCORE</p>
-            </div>
-            <div class="player-choice">
-                <p>HOKIEBIRD CHOSE</p>
-                <div class="choice-circle"></div>
-            </div>
+            <p class="roundResult"></p>
+            <div id="score-section" class="score-container">
+                <div class="score-text">SCORE</div>
+                <div class="score-content"></div>
+            </div>    
+        </div>
+        <div class="hokiebird-choice">
+            <p>HOKIEBIRD CHOSE</p>
+            <div id='hokiebird-img' class="choice-circle"></div>
         </div>
     </div>
-    <footer>
-        <div class="rules">RULES</div>
-    </footer>
 
 </body>
 </html>
